@@ -42,8 +42,8 @@ threats = {
 #the list of estimated time of resolution
 estimated_times = [6,24,8,40,24,8,24,2,6,72,8]
 
-#penality = max(estimated_times)+1
-penality = 73
+#penalty = max(estimated_times)+1
+penalty = 73
 
 #Now I've to make the dataset (of 14 incidents)
 incidents = []
@@ -77,7 +77,7 @@ def create_QUBO_problem(linear_terms,quadratic_terms):
     for i in range(1,len(linear_terms)+1):
         qubo.binary_var('x%s' % (i))
 
-    #apply the penality for each linear term
+    #apply the penalty for each linear term
     for threat_list in actual_controls.values():
         for threat_id in threat_list:
             linear_terms[threat_id-1] -= 73
@@ -98,9 +98,9 @@ for threat_list in actual_controls.values():
         for j in threat_list:
             if(j>i):
                 try:
-                    quadratic[i,j] += 2*penality
+                    quadratic[i,j] += 2*penalty
                 except:
-                    quadratic[i,j] = 2*penality
+                    quadratic[i,j] = 2*penalty
 
 qubo = create_QUBO_problem(linear_terms,quadratic)
 print(qubo)
@@ -119,6 +119,6 @@ qaoa_mes = QAOA(quantum_instance=quantum_instance, initial_point=[0.0, 0.0])
 #using the minimum eigen solver to istanciate the minimum eigen optimizer
 qaoa = MinimumEigenOptimizer(qaoa_mes)
 
-print("Wait for the QUBO problem annealing.......")
+print("Wait.......")
 qaoa_result = qaoa.solve(qubo)
 print(qaoa_result)
