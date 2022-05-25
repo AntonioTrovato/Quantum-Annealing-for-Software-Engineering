@@ -109,7 +109,7 @@ print(qubo)
 algorithm_globals.random_seed = 10598
 
 quantum_instance = QuantumInstance(
-    BasicAer.get_backend("statevector_simulator"),
+    BasicAer.get_backend("qasm_simulator"),
     seed_simulator=algorithm_globals.random_seed,
     seed_transpiler=algorithm_globals.random_seed,
 )
