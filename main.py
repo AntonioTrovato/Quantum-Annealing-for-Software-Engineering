@@ -3,10 +3,10 @@ import numpy as np
 from Incident import Incident
 from qiskit import BasicAer
 from qiskit.utils import algorithm_globals
-from qiskit.optimization import QuadraticProgram
-from qiskit.optimization.algorithms import MinimumEigenOptimizer
-from qiskit.aqua import QuantumInstance
-from qiskit.aqua.algorithms import QAOA
+from qiskit_optimization import QuadraticProgram
+from qiskit_optimization.algorithms import MinimumEigenOptimizer
+from qiskit.utils import QuantumInstance
+from qiskit.algorithms import QAOA
 
 #First of all, I've to instanciate dictionaries of controls and incidents
 controls = {
